@@ -62,4 +62,6 @@ the dispatch property exposed is an Array of dispatch.
 
 ## Links
 
+[Reference](https://ezylean.github.io/vue-makina)
+
 [Makina](https://www.npmjs.com/package/@ezy/makina)
