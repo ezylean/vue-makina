@@ -1,3 +1,4 @@
+import VueConstructor from 'vue';
 import { mixinFactory } from './mixinFactory';
 
 const optionsDefaults = {
@@ -11,7 +12,10 @@ const optionsDefaults = {
  * @param overrideOptions     override the default options.
  * @returns                   void
  */
-export function install(Vue, overrideOptions: Partial<typeof optionsDefaults>) {
+export function install(
+  Vue: typeof VueConstructor,
+  overrideOptions: Partial<typeof optionsDefaults>
+) {
   // Merge options argument into options defaults
   const options = { ...optionsDefaults, ...overrideOptions };
 
