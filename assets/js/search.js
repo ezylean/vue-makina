@@ -1,0 +1,3 @@
+var typedoc = typedoc || {};
+            typedoc.search = typedoc.search || {};
+            typedoc.search.data = {"kinds":{"32":"Variable","64":"Function","2097152":"Object literal"},"rows":[{"id":0,"kind":2097152,"name":"optionsDefaults","url":"globals.html#optionsdefaults","classes":"tsd-kind-object-literal"},{"id":1,"kind":32,"name":"allowDirectDispatch","url":"globals.html#optionsdefaults.allowdirectdispatch","classes":"tsd-kind-variable tsd-parent-kind-object-literal","parent":"optionsDefaults"},{"id":2,"kind":64,"name":"install","url":"globals.html#install","classes":"tsd-kind-function"}]};
