@@ -37,11 +37,11 @@ export function mixinFactory(options: { allowDirectDispatch: boolean }) {
         if (uniqueDispatchs.length === 1) {
           this.dispatch = options.allowDirectDispatch
             ? uniqueDispatchs[0]
-            : { ...uniqueDispatchs[0] };
+            : Object.create(uniqueDispatchs[0]);
         } else {
           this.dispatch = options.allowDirectDispatch
             ? uniqueDispatchs
-            : uniqueDispatchs.map(dispatch => ({ ...dispatch }));
+            : uniqueDispatchs.map(dispatch => Object.create(dispatch));
         }
       }
     },
