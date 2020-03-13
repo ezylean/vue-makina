@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.4](https://github.com/ezylean/vue-makina/compare/v1.0.3...v1.0.4) (2020-03-13)
+
+
+### Bug Fixes
+
+* **hmr:** use Object.create to keep the dispatch object synchronized when using HMR ([6179661](https://github.com/ezylean/vue-makina/commit/6179661))
+
+
+
 ### [1.0.3](https://github.com/ezylean/vue-makina/compare/v1.0.2...v1.0.3) (2020-03-08)
 
 
