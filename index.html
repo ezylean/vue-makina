@@ -67,53 +67,77 @@
 				<p align="center">
 					<img src="https://fakeimg.pl/900x300/ffffff/333333/?text=vue-makina&font=museo" alt="vue-makina" />
 				</p>
-				<p align="center">official Vue bindings for Makina</p>
+				<p align="center">Vue bindings for Makina</p>
 				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
 					<h2>Installation</h2>
 				</a>
 				<pre><code class="language-shell">npm i @ezy/vue-makina</code></pre>
-				<a href="#setup" id="setup" style="color: inherit; text-decoration: none;">
-					<h2>Setup</h2>
-				</a>
-				<p>the VueMakina plugin accept an optionnal option object with the following options:</p>
-				<p><code>allowDirectDispatch</code>: set to <code>true</code> if you want to allow <code>dispatch({ type: &#39;SOME_ACTION&#39; })</code> in your components (default: <code>false</code>).</p>
-				<a href="#example" id="example" style="color: inherit; text-decoration: none;">
-					<h3>Example</h3>
+				<a href="#options-style-example" id="options-style-example" style="color: inherit; text-decoration: none;">
+					<h3>Options-style Example</h3>
 				</a>
 				<pre><code class="language-js"><span class="hljs-keyword">import</span> Vue <span class="hljs-keyword">from</span> <span class="hljs-string">"vue"</span>
 <span class="hljs-keyword">import</span> VueMakina <span class="hljs-keyword">from</span> <span class="hljs-string">"@ezy/vue-makina"</span>
 
-Vue.use(VueMakina, { <span class="hljs-attr">allowDirectDispatch</span>: <span class="hljs-literal">false</span> })
-
+Vue.use(VueMakina)
 ...</code></pre>
-				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
-					<h2>Usage</h2>
-				</a>
 				<p>the VueMakina plugin add a <code>stateMachines</code> option to your components.
 				this option acccept a mapping object where every key represent the component property to update whenever a state change and the value a stateMachine.</p>
-				<p>note: when a stateMachine is added his dispatch function will be assigned to the component.</p>
-				<p>note 2: if different stateMachines from different StateMachineFactory is used
-				the dispatch property exposed is an Array of dispatch.</p>
-				<a href="#example-1" id="example-1" style="color: inherit; text-decoration: none;">
-					<h3>Example</h3>
+				<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>{{ counter }}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">v-on:click</span>=<span class="hljs-string">"increment()"</span>&gt;</span>+<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">v-on:click</span>=<span class="hljs-string">"decrement()"</span>&gt;</span>-<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"ts"</span>&gt;</span><span class="javascript">
+  <span class="hljs-keyword">import</span> { app } <span class="hljs-keyword">from</span> <span class="hljs-string">'../state-management'</span>;
+
+  <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
+    <span class="hljs-attr">stateMachines</span>: {
+      <span class="hljs-attr">counter</span>: app.counter
+    },
+    <span class="hljs-attr">methods</span>: {
+      increment () {
+        app.counter.increment()
+      },
+      decrement () {
+        app.counter.decrement()
+      }
+    }
+  };
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+				<a href="#class-style-example" id="class-style-example" style="color: inherit; text-decoration: none;">
+					<h3>Class-style Example</h3>
 				</a>
 				<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>{{ counter }}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">v-on:click</span>=<span class="hljs-string">"dispatch.increment()"</span>&gt;</span>+<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">v-on:click</span>=<span class="hljs-string">"dispatch.decrement()"</span>&gt;</span>-<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">v-on:click</span>=<span class="hljs-string">"increment()"</span>&gt;</span>+<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">v-on:click</span>=<span class="hljs-string">"decrement()"</span>&gt;</span>-<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"ts"</span>&gt;</span><span class="javascript">
-  <span class="hljs-keyword">import</span> { counterStateMachine } <span class="hljs-keyword">from</span> <span class="hljs-string">'../state-management'</span>;
+  <span class="hljs-keyword">import</span> Vue <span class="hljs-keyword">from</span> <span class="hljs-string">'vue'</span>
+  <span class="hljs-keyword">import</span> Component <span class="hljs-keyword">from</span> <span class="hljs-string">'vue-class-component'</span>
+  <span class="hljs-keyword">import</span> { State } <span class="hljs-keyword">from</span> <span class="hljs-string">'vue-makina'</span>
+  <span class="hljs-keyword">import</span> { app } <span class="hljs-keyword">from</span> <span class="hljs-string">'../state-management'</span>;
 
-  <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
-    <span class="hljs-attr">stateMachines</span>: {
-      <span class="hljs-attr">counter</span>: counterStateMachine
+  @Component
+  <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Vue</span> </span>{
+    @State(app.counter) readonly counter: <span class="hljs-keyword">typeof</span> app.counter.state
+
+    public increment () {
+      app.counter.increment()
     }
-  };
+
+    public decrement () {
+      app.counter.decrement()
+    }
+  }
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
 				<a href="#links" id="links" style="color: inherit; text-decoration: none;">
 					<h2>Links</h2>
@@ -131,18 +155,21 @@ Vue.use(VueMakina, { <span class="hljs-attr">allowDirectDispatch</span>: <span c
 					<li class=" tsd-kind-module">
 						<a href="modules/_vue_types_options_.html">&quot;vue/types/options&quot;</a>
 					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_vue_types_vue_.html">&quot;vue/types/vue&quot;</a>
-					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-interface tsd-has-type-parameter">
+						<a href="interfaces/statemachine.html" class="tsd-kind-icon">State<wbr>Machine</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#state" class="tsd-kind-icon">State</a>
+					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#install" class="tsd-kind-icon">install</a>
 					</li>
 					<li class=" tsd-kind-object-literal">
-						<a href="globals.html#optionsdefaults" class="tsd-kind-icon">options<wbr>Defaults</a>
+						<a href="globals.html#mixin" class="tsd-kind-icon">mixin</a>
 					</li>
 				</ul>
 			</nav>
