@@ -1,23 +1,12 @@
 import VueConstructor from 'vue';
-import { mixinFactory } from './mixinFactory';
-
-const optionsDefaults = {
-  allowDirectDispatch: false
-};
+import { mixin } from './mixin';
 
 /**
  * install function required by the Vue plugin system
  *
  * @param Vue                 Vue constructor.
- * @param overrideOptions     override the default options.
  * @returns                   void
  */
-export function install(
-  Vue: typeof VueConstructor,
-  overrideOptions: Partial<typeof optionsDefaults>
-) {
-  // Merge options argument into options defaults
-  const options = { ...optionsDefaults, ...overrideOptions };
-
-  Vue.mixin(mixinFactory(options));
+export function install(Vue: typeof VueConstructor) {
+  Vue.mixin(mixin);
 }

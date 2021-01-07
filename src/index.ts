@@ -1,23 +1,11 @@
-import { StateMachine, BareStateMachine } from '@ezy/makina';
 import * as plugin from './lib';
+export * from './lib/decorator';
+import { StateMachine } from './types';
 
 declare module 'vue/types/options' {
   interface ComponentOptions<V extends Vue> {
     stateMachines?: {
-      [key: string]:
-        | StateMachine<any, any, any, any>
-        | BareStateMachine<any, any, any, any>;
-    };
-  }
-}
-
-declare module 'vue/types/vue' {
-  interface Vue {
-    dispatch: ((action: {
-      type: string;
-      [key: string]: any;
-    }) => Promise<boolean>) & {
-      [key: string]: (...args) => Promise<boolean>;
+      [key: string]: StateMachine<any>;
     };
   }
 }
