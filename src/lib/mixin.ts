@@ -17,17 +17,13 @@ export const mixin = {
   created() {
     const stateMachines: StateMachine<any> = this.$options.stateMachines;
     if (stateMachines) {
-      const stateMachineNames = Object.keys(stateMachines);
-      this._makinaSubscriptions = stateMachineNames.map(prop => {
-        return stateMachines[prop].onStateChange(state => {
-          this[prop] = state;
-        });
-      });
-    }
-  },
-  beforeDestroy() {
-    if (this._makinaSubscriptions) {
-      this._makinaSubscriptions.map(unsubscribe => unsubscribe());
+      for (const prop in stateMachines) {
+        if (Object.prototype.hasOwnProperty.call(stateMachines, prop)) {
+          this.$once('hook:beforeDestroy', stateMachines[prop].onStateChange(state => {
+            this[prop] = state;
+          }))
+        }
+      }
     }
   }
 };

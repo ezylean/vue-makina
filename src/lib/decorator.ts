@@ -3,7 +3,6 @@ import { StateMachine } from '../types';
 
 export function State(stateMachine: StateMachine<any>) {
   return createDecorator((options, key) => {
-    const UNSUBSCRIBE = `__${key}MakinaUnsubscribe`;
     options.mixins.push({
       data() {
         return {
@@ -11,12 +10,9 @@ export function State(stateMachine: StateMachine<any>) {
         };
       },
       created() {
-        this[UNSUBSCRIBE] = stateMachine.onStateChange(state => {
+        this.$once('hook:beforeDestroy', stateMachine.onStateChange(state => {
           this[key] = state;
-        });
-      },
-      beforeDestroy() {
-        this[UNSUBSCRIBE]();
+        }))
       }
     });
   });

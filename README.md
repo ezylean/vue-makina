@@ -67,7 +67,7 @@ this option acccept a mapping object where every key represent the component pro
 <script lang="ts">
   import Vue from 'vue'
   import Component from 'vue-class-component'
-  import { State } from 'vue-makina'
+  import { State } from '@ezy/vue-makina'
   import { app } from '../state-management';
 
   @Component
