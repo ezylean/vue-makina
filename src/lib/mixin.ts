@@ -1,28 +1,28 @@
-import { StateMachine } from '../types';
-
 /**
  * vue-makina mixin to manage the `stateMachines` option.
  */
 export const mixin = {
   data() {
-    const stateMachines: StateMachine<any> = this.$options.stateMachines;
-    if (stateMachines) {
-      return Object.keys(stateMachines).reduce((result, prop) => {
-        result[prop] = stateMachines[prop].state;
-        return result;
-      }, {});
-    }
-    return {};
+    this.$sm = {
+      ...this.$options.stateMachines,
+      ...this.$attrs.stateMachines,
+      ...this.$attrs['state-machines']
+    };
+
+    return Object.keys(this.$sm).reduce((result, prop) => {
+      result[prop] = this.$sm[prop].state;
+      return result;
+    }, {});
   },
   created() {
-    const stateMachines: StateMachine<any> = this.$options.stateMachines;
-    if (stateMachines) {
-      for (const prop in stateMachines) {
-        if (Object.prototype.hasOwnProperty.call(stateMachines, prop)) {
-          this.$once('hook:beforeDestroy', stateMachines[prop].onStateChange(state => {
+    for (const prop in this.$sm) {
+      if (Object.prototype.hasOwnProperty.call(this.$sm, prop)) {
+        this.$once(
+          'hook:beforeDestroy',
+          this.$sm[prop].onStateChange(state => {
             this[prop] = state;
-          }))
-        }
+          })
+        );
       }
     }
   }

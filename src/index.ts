@@ -10,6 +10,14 @@ declare module 'vue/types/options' {
   }
 }
 
+declare module 'vue/types/vue' {
+  interface Vue {
+    $sm: {
+      [key: string]: StateMachine<any>;
+    };
+  }
+}
+
 export const install = plugin.install;
 export default plugin;
 
