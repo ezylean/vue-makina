@@ -10,17 +10,19 @@ export const mixin = {
     };
 
     return Object.keys(this.$sm).reduce((result, prop) => {
-      result[prop] = this.$sm[prop].state;
+      const [sm, selector] = Array.isArray(this.$sm[prop])? this.$sm[prop] : [this.$sm[prop], (state) => state];
+      result[prop] = selector(sm.state);
       return result;
     }, {});
   },
   created() {
     for (const prop in this.$sm) {
       if (Object.prototype.hasOwnProperty.call(this.$sm, prop)) {
+        const [sm, selector] = Array.isArray(this.$sm[prop])? this.$sm[prop] : [this.$sm[prop], (state) => state];
         this.$once(
           'hook:beforeDestroy',
-          this.$sm[prop].onStateChange(state => {
-            this[prop] = state;
+          sm.onStateChange(state => {
+            this[prop] = selector(state);
           })
         );
       }

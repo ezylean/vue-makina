@@ -5,7 +5,7 @@ import { StateMachine } from './types';
 declare module 'vue/types/options' {
   interface ComponentOptions<V extends Vue> {
     stateMachines?: {
-      [key: string]: StateMachine<any>;
+      [key: string]: (StateMachine<any> | [StateMachine<any>, (state: any) => any]);
     };
   }
 }
@@ -13,7 +13,7 @@ declare module 'vue/types/options' {
 declare module 'vue/types/vue' {
   interface Vue {
     $sm: {
-      [key: string]: StateMachine<any>;
+      [key: string]: (StateMachine<any> | [StateMachine<any>, (state: any) => any]);
     };
   }
 }

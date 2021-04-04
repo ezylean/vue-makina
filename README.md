@@ -39,6 +39,8 @@ this option acccept a mapping object where every key represent the component pro
   export default {
     stateMachines: {
       counter: app.counter
+      // or using selector
+      // counter: [app, state => state.counter]
     },
     methods: {
       increment () {
@@ -73,6 +75,8 @@ this option acccept a mapping object where every key represent the component pro
   @Component
   export default class extends Vue {
     @State(app.counter) readonly counter: typeof app.counter.state
+    // or using selector
+    // @State(app, state => state.counter) readonly counter: typeof app.state.counter
 
     public increment () {
       app.counter.increment()
@@ -113,6 +117,58 @@ this allow you to:
 </script>
 ```
 
+### On mutation
+
+Vue being based on mutation,
+you will pretty quickly run into mutating your app atate directly from your components, which destroy the entire point of having a state machine.
+
+So, to avoid that kind of issues please consider using the selector option to create a copy of your state for your components.
+
+#### exemple
+
+```html
+<template>
+  ...
+</template>
+
+<script lang="ts">
+  import copy from "fast-copy";
+  import { app } from '../state-management';
+
+  export default {
+    stateMachines: {
+      todos: [app, state => copy(state.todos)]
+    },
+    ...
+  };
+</script>
+```
+
+or
+
+```html
+<template>
+  ...
+</template>
+
+<script lang="ts">
+  import Vue from 'vue'
+  import Component from 'vue-class-component'
+  import { State } from '@ezy/vue-makina'
+  import copy from "fast-copy";
+  import { app } from '../state-management';
+
+  @Component
+  export default class extends Vue {
+    
+    @State(app, state => copy(state.todos)) readonly todos: typeof app.state.todos
+
+    ...
+  }
+</script>
+```
+
+It also may be beneficial to freeze the state of your state machine, [see here](https://www.npmjs.com/package/@ezy/makina#immutable-state-guarantee).
 
 ## Links
 

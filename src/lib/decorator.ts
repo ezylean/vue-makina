@@ -1,7 +1,7 @@
 import { createDecorator } from 'vue-class-component';
 import { StateMachine } from '../types';
 
-export function State(stateMachine: StateMachine<any>) {
+export function State(stateMachine: StateMachine<any>, selector: (state: any) => any = (state) => state ) {
   return createDecorator((options, key) => {
     options.mixins.push({
       data() {
@@ -10,7 +10,7 @@ export function State(stateMachine: StateMachine<any>) {
         }
 
         return {
-          [key]: stateMachine.state
+          [key]: selector(stateMachine.state)
         };
       },
       created() {
@@ -21,11 +21,11 @@ export function State(stateMachine: StateMachine<any>) {
         this.$once(
           'hook:beforeDestroy',
           stateMachine.onStateChange(state => {
-            this[key] = state;
+            this[key] = selector(state);
           })
         );
 
-        this.$sm = { ...this.$sm, [key]: stateMachine };
+        this.$sm = { ...this.$sm, [key]: [stateMachine, selector] };
       }
     });
   });

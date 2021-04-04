@@ -3,7 +3,7 @@
   "version": "1.2.0",
   "description": "official Vue bindings for Makina",
   "main": "build/main/index.js",
-  "typings": "build/main/index.d.ts",
+  "types": "build/main/index.d.ts",
   "module": "build/module/index.js",
   "repository": "https://github.com/ezylean/vue-makina",
   "license": "MIT",
