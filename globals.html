@@ -71,6 +71,7 @@
 							<h3>Modules</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-module"><a href="modules/_vue_types_options_.html" class="tsd-kind-icon">&quot;vue/types/options&quot;</a></li>
+								<li class="tsd-kind-module"><a href="modules/_vue_types_vue_.html" class="tsd-kind-icon">&quot;vue/types/vue&quot;</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
@@ -101,19 +102,40 @@
 					<a name="state" class="tsd-anchor"></a>
 					<h3>State</h3>
 					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">State<span class="tsd-signature-symbol">(</span>stateMachine<span class="tsd-signature-symbol">: </span><a href="interfaces/statemachine.html" class="tsd-signature-type">StateMachine</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">VueDecorator</span></li>
+						<li class="tsd-signature tsd-kind-icon">State<span class="tsd-signature-symbol">(</span>stateMachine<span class="tsd-signature-symbol">: </span><a href="interfaces/statemachine.html" class="tsd-signature-type">StateMachine</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span>, selector<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">VueDecorator</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ezylean/vue-makina/blob/f4b7d5a/src/lib/decorator.ts#L4">lib/decorator.ts:4</a></li>
+									<li>Defined in <a href="https://github.com/ezylean/vue-makina/blob/8dc8306/src/lib/decorator.ts#L4">lib/decorator.ts:4</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>stateMachine: <a href="interfaces/statemachine.html" class="tsd-signature-type">StateMachine</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> selector: <span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> = (state) &#x3D;&gt; state</span></h5>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter-siganture">
+											<ul class="tsd-signatures tsd-kind-type-literal">
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
+											</ul>
+											<ul class="tsd-descriptions">
+												<li class="tsd-description">
+													<h4 class="tsd-parameters-title">Parameters</h4>
+													<ul class="tsd-parameters">
+														<li>
+															<h5>state: <span class="tsd-signature-type">any</span></h5>
+														</li>
+													</ul>
+													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
+												</li>
+											</ul>
+										</li>
+									</ul>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">VueDecorator</span></h4>
@@ -130,7 +152,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ezylean/vue-makina/blob/f4b7d5a/src/lib/index.ts#L10">lib/index.ts:10</a></li>
+									<li>Defined in <a href="https://github.com/ezylean/vue-makina/blob/8dc8306/src/lib/index.ts#L10">lib/index.ts:10</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -161,7 +183,7 @@
 					<div class="tsd-signature tsd-kind-icon">mixin<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ezylean/vue-makina/blob/f4b7d5a/src/lib/mixin.ts#L6">lib/mixin.ts:6</a></li>
+							<li>Defined in <a href="https://github.com/ezylean/vue-makina/blob/8dc8306/src/lib/mixin.ts#L4">lib/mixin.ts:4</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -169,23 +191,6 @@
 							<p>vue-makina mixin to manage the <code>stateMachines</code> option.</p>
 						</div>
 					</div>
-					<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-object-literal">
-						<a name="mixin.beforedestroy" class="tsd-anchor"></a>
-						<h3>before<wbr>Destroy</h3>
-						<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-object-literal">
-							<li class="tsd-signature tsd-kind-icon">before<wbr>Destroy<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-						</ul>
-						<ul class="tsd-descriptions">
-							<li class="tsd-description">
-								<aside class="tsd-sources">
-									<ul>
-										<li>Defined in <a href="https://github.com/ezylean/vue-makina/blob/f4b7d5a/src/lib/mixin.ts#L28">lib/mixin.ts:28</a></li>
-									</ul>
-								</aside>
-								<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-							</li>
-						</ul>
-					</section>
 					<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-object-literal">
 						<a name="mixin.created" class="tsd-anchor"></a>
 						<h3>created</h3>
@@ -196,7 +201,7 @@
 							<li class="tsd-description">
 								<aside class="tsd-sources">
 									<ul>
-										<li>Defined in <a href="https://github.com/ezylean/vue-makina/blob/f4b7d5a/src/lib/mixin.ts#L17">lib/mixin.ts:17</a></li>
+										<li>Defined in <a href="https://github.com/ezylean/vue-makina/blob/8dc8306/src/lib/mixin.ts#L18">lib/mixin.ts:18</a></li>
 									</ul>
 								</aside>
 								<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -213,7 +218,7 @@
 							<li class="tsd-description">
 								<aside class="tsd-sources">
 									<ul>
-										<li>Defined in <a href="https://github.com/ezylean/vue-makina/blob/f4b7d5a/src/lib/mixin.ts#L7">lib/mixin.ts:7</a></li>
+										<li>Defined in <a href="https://github.com/ezylean/vue-makina/blob/8dc8306/src/lib/mixin.ts#L5">lib/mixin.ts:5</a></li>
 									</ul>
 								</aside>
 								<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">{}</span></h4>
@@ -233,6 +238,9 @@
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="modules/_vue_types_options_.html">&quot;vue/types/options&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_vue_types_vue_.html">&quot;vue/types/vue&quot;</a>
 					</li>
 				</ul>
 			</nav>
