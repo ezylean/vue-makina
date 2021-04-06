@@ -7,7 +7,11 @@
   "module": "build/module/index.js",
   "repository": "https://github.com/ezylean/vue-makina",
   "license": "MIT",
-  "keywords": [],
+  "keywords": [
+    "vue",
+    "state",
+    "state management"
+  ],
   "scripts": {
     "describe": "npm-scripts-info",
     "build": "run-s clean && run-p build:*",

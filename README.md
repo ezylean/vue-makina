@@ -120,7 +120,7 @@ this allow you to:
 ### On mutation
 
 Vue being based on mutation,
-you will pretty quickly run into mutating your app atate directly from your components, which destroy the entire point of having a state machine.
+you will pretty quickly run into mutating your app state directly from your components, which destroy the entire point of having a state machine.
 
 So, to avoid that kind of issues please consider using the selector option to create a copy of your state for your components.
 
