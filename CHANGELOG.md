@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/ezylean/vue-makina/compare/v1.3.0...v2.0.0) (2021-07-23)
+
+
+### ⚠ BREAKING CHANGES
+
+* **general:** everything
+
+### Features
+
+* **general:** complete rewrite ([458d58f](https://github.com/ezylean/vue-makina/commit/458d58f8b2c5e560794c6274811584130f6004b4))
+
 ## [1.3.0](https://github.com/ezylean/vue-makina/compare/v1.2.0...v1.3.0) (2021-04-04)
 
 
