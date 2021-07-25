@@ -2,7 +2,7 @@ import test from 'ava';
 import { within } from '@testing-library/dom';
 import { render, fireEvent } from '@testing-library/vue';
 import { config, createBase } from '@ezy/makina';
-import '../plugins/makina';
+import '../';
 
 process.env.NODE_ENV = 'development';
 
@@ -13,10 +13,6 @@ import TodosComponent from '../../../src/tests/components/Todos.vue';
 import { lensPath } from 'ramda';
 
 config.freeze = Object.freeze;
-
-test('plugin correctly included', (t) => {
-  t.truthy(config.plugins.vue, 'unable to locate vue plugin');
-});
 
 test('simple', async (t) => {
   class Counter extends createBase()<number> {

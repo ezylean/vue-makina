@@ -40,7 +40,29 @@ const counter: Filterables<Counter> = Counter.create();
 export default counter;
 ```
 
-`index.ts`
+`index.ts` (for Vue 3)
+```js
+import { createApp } from "vue"
+import VueMakina from "@ezy/vue-makina"
+import App from './App.vue'
+import counter from "./counter"
+
+const app = createApp(App)
+
+app.use(VueMakina)
+
+declare module '@vue/runtime-core' {
+  interface ComponentCustomProperties {
+    $counter: typeof counter
+  }
+}
+
+app.config.globalProperties.$counter = counter;
+
+...
+```
+
+`index.ts` (for Vue 2)
 ```js
 import Vue from "vue"
 import VueMakina from "@ezy/vue-makina"
@@ -58,6 +80,7 @@ Vue.prototype.$counter = counter;
 
 ...
 ```
+
 `counter` is now available in every component as `$counter`.
 
 `Counter.vue`

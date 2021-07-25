@@ -59,7 +59,7 @@
   },
   "devDependencies": {
     "@ava/typescript": "^1.1.1",
-    "@ezy/makina": "^7.0.0",
+    "@ezy/makina": "^7.0.1",
     "@istanbuljs/nyc-config-typescript": "^1.0.1",
     "@testing-library/vue": "^5.8.1",
     "@typescript-eslint/eslint-plugin": "^4.26.1",
